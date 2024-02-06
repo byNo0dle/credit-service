@@ -11,7 +11,7 @@ public class MovementCredit {
   Double amount;
   Date dateMovement;
   TypeMovementCredit typeMovementCredit;
-  Long idCredit;
+  String idCredit;
 
   @Override
   public String toString() {
