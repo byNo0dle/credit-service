@@ -1,8 +1,0 @@
-server:
-  port: '9006'
-spring:
-  data:
-    mongodb:
-      database: bank
-      port: '27017'
-      host: localhost
