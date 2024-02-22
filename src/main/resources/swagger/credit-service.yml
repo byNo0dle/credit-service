@@ -1,0 +1,179 @@
+openapi: 3.0.0
+info:
+  title: Credence API
+  version: 1.0.0
+  description: API for managing bank credence. BootCamp Microservices 49.
+  contact:
+    name: No0dl3 Support
+    url: https://github.com/byNo0dle
+servers:
+  - url: http://localhost:9006/api
+    description: Credence Service
+paths:
+  /credence:
+    get:
+      tags:
+        - Credence
+      summary: Find all Credence
+      operationId: findAllCredence
+      responses:
+        '200':
+          description: List of Credence retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Credence'
+        '400':
+          description: Bad Request invalid syntax
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredenceError'
+        '404':
+          description: Not Found Credence
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredenceError'
+    post:
+      tags:
+        - Credence
+      summary: Add a new Credence to the bank
+      description: Add a new Credence to the bank
+      operationId: saveCredence
+      requestBody:
+        description: Create a new Credence in the bank
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Credence'
+        required: true
+      responses:
+        '201':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Credence'
+        '400':
+          description: Bad Request invalid syntax
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredenceError'
+        '404':
+          description: Not Found Credence
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredenceError'
+
+components:
+  schemas:
+    Credence:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 65xd2dx0x7d11d2x20827638
+        cardNumber:
+          type: string
+          example: 0000-1111-2222-3333
+        cvv:
+          type: integer
+          example: 890
+        month:
+          type: integer
+          example: 12
+        year:
+          type: integer
+          example: 27
+        creditLimit:
+          type: double
+          example: 3500.00
+        paymentDate:
+          type: date
+          example: 2024-06-25
+        isActive:
+          type: boolean
+          example:
+            - true
+            - false
+        amountAvailable:
+          type: double
+          example: 2800.00
+        amountConsumed:
+          type: double
+          example: 1700.00
+        client:
+          $ref: '#/components/schemas/Client'
+        typeCredit:
+          $ref: '#/components/schemas/TypeCredit'
+    Client:
+      properties:
+        id:
+          type: string
+          example: 65xd2dx0x7d11d2x20827638
+        firstName:
+          type: string
+          example: Manolo
+        lastName:
+          type: string
+          example: Sabino Torres
+        numberDocumentIdentity:
+          type: string
+          example: 74531234
+        email:
+          type: string
+          example: manolosabinotorres@gmail.com
+        typeCustomer:
+          $ref: '#/components/schemas/TypeCustomer'
+        identityDocumentType:
+          $ref: '#/components/schemas/IdentityDocumentType'
+    TypeCredit:
+      properties:
+        code:
+          type: string
+          example: 001
+        description:
+          type: string
+          example: Personal
+        maintenanceCommission:
+          type: integer
+          example: 0
+        amountCredits:
+          type: integer
+          example: 1
+        isActive:
+          type: boolean
+          example:
+            - true
+            - false
+    TypeCustomer:
+      properties:
+        id:
+          type: string
+          example: 1
+        description:
+          type: string
+          example: Personal
+    IdentityDocumentType:
+      properties:
+        code:
+          type: string
+          example: 1
+        description:
+          type: string
+          example: DNI
+    CredenceError:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+      required:
+        - code
+        - message
