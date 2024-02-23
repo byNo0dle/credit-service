@@ -51,7 +51,7 @@ paths:
               $ref: '#/components/schemas/Credence'
         required: true
       responses:
-        '201':
+        '200':
           description: Successful Operation
           content:
             application/json:
@@ -83,7 +83,7 @@ components:
           example: 0000-1111-2222-3333
         cvv:
           type: integer
-          example: 890
+          example: 123
         month:
           type: integer
           example: 12
@@ -91,10 +91,11 @@ components:
           type: integer
           example: 27
         creditLimit:
-          type: double
-          example: 3500.00
+          type: number
+          example: 3500
         paymentDate:
-          type: date
+          type: string
+          format: date
           example: 2024-06-25
         isActive:
           type: boolean
@@ -102,11 +103,11 @@ components:
             - true
             - false
         amountAvailable:
-          type: double
-          example: 2800.00
+          type: number
+          example: 2800
         amountConsumed:
-          type: double
-          example: 1700.00
+          type: number
+          example: 1700
         client:
           $ref: '#/components/schemas/Client'
         typeCredit:

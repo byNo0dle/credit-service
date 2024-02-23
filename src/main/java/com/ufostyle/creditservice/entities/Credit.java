@@ -5,6 +5,7 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -19,11 +20,11 @@ public class Credit {
   private Integer cvv;
   private Integer month;
   private Integer year;
-  private Double creditLimit;
+  private BigDecimal creditLimit;
   private LocalDate paymentDate;
   private Boolean isActive;
-  private Double amountAvailable;
-  private Double amountConsumed;
+  private BigDecimal amountAvailable;
+  private BigDecimal amountConsumed;
   private Customer customer;
   private CreditType creditType;
 }

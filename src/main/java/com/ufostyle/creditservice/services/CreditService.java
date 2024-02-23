@@ -10,4 +10,14 @@ public class CreditService {
 
   @Autowired
   CreditRepository creditRepository;
+
+  /*public Mono<Credence> save(Credence credence) {
+    return creditRepository.save()
+  }*/
+
+  /*public Mono<Client> save(Client client) {
+    log.info("--- Se creo un nuevo cliente: ---");
+    return customerRepository.save(CustomerMapper.customer(client))
+        .flatMap(customer1 -> Mono.just(CustomerMapper.client(customer1)));
+  }*/
 }

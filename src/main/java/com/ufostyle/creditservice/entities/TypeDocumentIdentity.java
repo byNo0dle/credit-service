@@ -7,6 +7,6 @@ import lombok.Data;
 @Data
 public class TypeDocumentIdentity {
 
-  private String id;
+  private String code;
   private String description;
 }
